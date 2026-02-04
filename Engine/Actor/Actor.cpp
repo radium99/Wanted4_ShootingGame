@@ -62,6 +62,35 @@ namespace Wanted
 		Engine::Get().QuitEngine();
 	}
 
+	bool Actor::TestIntersect(const Actor* const other)
+	{
+		// AABB (Axis Aligned Bounding Box).: 2차원 기반 겹치는지(충돌) 확인.
+		// 물체 가운데를 기반으로 너비와 높이 네 꼭짓점을 구함. (좌상단을 기준으로 하기도 함)
+		// x 좌표만 고려하면 됨. y는 크기가 1이기 때문.
+
+		// 자기자신의 x 좌표 정보.
+		int xMin = position.x;
+		int xMax = position.x + width - 1;
+
+		// 충돌을 비교할 다른 액터의 x좌표 정보.
+		int otherXMin = other->GetPosition().x;
+		int otherXMax = other->position.x + other->width - 1;
+		return false;
+
+		//안겹치는 조건 확인.
+		if (otherXMin > xMax)
+		{
+			return false;
+		}
+
+		if (otherXMax < xMin)
+		{
+			return false;
+		}
+
+		return position.y == other->position.y;
+	}
+
 	void Actor::SetPosition(const Vector2& newPosition)
 	{
 		// 렌더러에 빈칸 그리기 요청.

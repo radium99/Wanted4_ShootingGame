@@ -12,7 +12,10 @@ class GameLevel : public Level
 public:
 	GameLevel();
 	~GameLevel();
-
+	virtual void Tick(float deltaTime) override;
+	// 충돌 판정 처리 함수. //상용엔진은 
+	void ProcessCollisionPlayerBulletAndEnemy();
+	void ProcessCollisionPlayerAndEnemyBullet();
 private:
 	
 };
