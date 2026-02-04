@@ -20,6 +20,10 @@ private:
 
 	//왼쪽 이동 함수.
 	void MoveLeft();
+
+	// 탄약 발사 함수.
+	void Fire();
+
 private:
 
 
